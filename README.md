@@ -33,3 +33,7 @@ archive.txt tries to find a file either by mapping /example/file to
 - content/example/file/index.txt
 
 no routing necessary for files (css, images, etc) that exist.
+
+
+### license
+where not otherwise stated: licensend under CC0 1.0 Universal - https://creativecommons.org/publicdomain/zero/1.0/
