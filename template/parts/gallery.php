@@ -3,7 +3,7 @@
 <div class="gallery">
     <?php foreach($images as $image): ?>
     <div class="gallery-item">
-        <img src="<?php echo './content/'.$params['gallery'].'/'.$image; ?>" alt="">
+        <img src="<?php echo '/content/'.$params['gallery'].'/'.$image; ?>" alt="">
     </div>
     <?php endforeach; ?>
 </div>
