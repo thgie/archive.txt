@@ -9,23 +9,27 @@ archive.txt exists, because we needed to produce an archive of some digital cont
 3. composer install
 
 ## content
-a file ist structured as follows:
+a file is structured as follows:
 
 ```
 title: "archive.txt"
 description: "the metainformation is formated with yaml"
+gallery: "images/gallery"
 ---
 # archive.txt
 
 the content can be formated with _markdown_
 ```
 
-no metainformation parameters are necessary, but they are passed to the template parts.
+no metainformation parameters are necessary, but they are passed to the template parts. the dividing `---` line is kind of necessary, i'm just lazy writing exceptions.
+
+## gallery
+if a textfile containts a metaparamter `gallery`, archive.txt grabs alle the image from the given folder and produces a gallery. give path relative to content.
 
 ## routing
 archive.txt tries to find a file either by mapping /example/file to
 
-- content/example/file.txt, or if this doesn't exist to
+- content/example/file.txt, _or if this doesn't exist to_
 - content/example/file/index.txt
 
 no routing necessary for files (css, images, etc) that exist.
