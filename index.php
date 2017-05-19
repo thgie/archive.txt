@@ -14,8 +14,8 @@
     }
 
     $page = explode('---', file_get_contents($file));
-    $params = $Yaml::parse($page[1]);
-    $content = $Parsedown->text($page[2]);
+    $params = $Yaml::parse($page[0]);
+    $content = $Parsedown->text($page[1]);
 
     require_once 'template/header.php';
 
