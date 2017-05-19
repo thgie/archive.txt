@@ -11,6 +11,12 @@ html, body {
     padding: 50px;
 }
 
+@media (max-width: 480px){
+    #wrapper {
+        padding: 20px;
+    }
+}
+
 #wrapper > * {
     max-width: 700px;
 }
