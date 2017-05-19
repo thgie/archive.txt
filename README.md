@@ -9,7 +9,9 @@ archive.txt exists, because we needed to produce an archive of some digital cont
 3. composer install
 
 ## content
-a file is structured as follows:
+the actual archive content lives in the content folder where you structure content with folders. folder structure equals url structure. see routing.
+
+a file is built as follows:
 
 ```
 title: "archive.txt"
