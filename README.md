@@ -26,6 +26,9 @@ no metainformation parameters are necessary, but they are passed to the template
 ## gallery
 if a textfile containts a metaparamter `gallery`, archive.txt grabs alle the image from the given folder and produces a gallery. give path relative to content.
 
+## templating
+all the metainformation parameters are passed to the template. the rest is some echoing. it's not hard ...
+
 ## routing
 archive.txt tries to find a file either by mapping /example/file to
 
