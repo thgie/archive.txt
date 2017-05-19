@@ -41,3 +41,7 @@ a {
 a:hover {
     border-bottom: 1px solid #0074D9;
 }
+
+#instantclick {
+    max-width: 100%;
+}
