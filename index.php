@@ -21,4 +21,8 @@
 
     echo $content;
 
+    if(isset($params['gallery'])){
+        require_once 'template/gallery.php';
+    }
+
     require_once 'template/footer.php';

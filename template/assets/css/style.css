@@ -15,6 +15,11 @@ html, body {
     max-width: 700px;
 }
 
+#wrapper img {
+    width: 100%;
+    height: auto;
+}
+
 h1 {
     margin-top: 0;
 }
