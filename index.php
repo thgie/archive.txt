@@ -17,12 +17,4 @@
     $params = $Yaml::parse($page[0]);
     $content = $Parsedown->text($page[1]);
 
-    require_once 'template/header.php';
-
-    echo $content;
-
-    if(isset($params['gallery'])){
-        require_once 'template/gallery.php';
-    }
-
-    require_once 'template/footer.php';
+    require_once 'template/index.php';
