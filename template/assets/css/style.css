@@ -26,12 +26,13 @@ html, body {
     height: auto;
 }
 
-h1 {
-    margin-top: 0;
-}
-
 h1, h2, h3, h4, h5, h6 {
     line-height: 1.8rem;
+}
+
+h1 {
+    margin-top: 0;
+    line-height: 2.4rem;
 }
 
 a {
