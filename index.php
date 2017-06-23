@@ -26,3 +26,19 @@
         $text = preg_replace("/^$bom/", '', $text);
         return $text;
     }
+
+    function subfoldering($dir, &$results = array()){
+        $files = scandir($dir);
+
+        foreach($files as $key => $value){
+            $path = $dir.DIRECTORY_SEPARATOR.$value;
+            if(!is_dir($path)) {
+
+            } else if($value != "." && $value != "..") {
+                subfoldering($path, $results);
+                $results[] = $path;
+            }
+        }
+
+        return $results;
+    }

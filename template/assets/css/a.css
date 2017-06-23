@@ -1,0 +1,16 @@
+.post-body {
+    margin-top: 0;
+}
+.post-article .text .meta {
+    line-height: 1.4em;
+}
+#wrapper {
+    -webkit-animation: none;
+    -moz-animation: none;
+    -ms-animation: none;
+    -o-animation: none;
+    animation: none;
+}
+.post-body img {
+    max-width: 100%;
+}
