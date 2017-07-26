@@ -1,6 +1,6 @@
 <main id="main" class="container">
 
-    <div class="row article-holder">
+    <div class="article-holder">
         <!-- Post -->
 
         <?php
@@ -17,14 +17,9 @@
             $content = $Parsedown->text($page[1]);
 
             if($params['title'] != ''){
-                echo '<article class="post-article col-sm-4 col-xs-12">';
-                    echo '<div class="img-holder">';
-                        echo '<a href="'.str_replace('./content', '', $path).'">';
-    //                        echo '<img src="images/blog-feat-img/img12.jpg" width="455" height="640" alt="image description" class="img-responsive lazy" >';
-                            echo '<div class="caption text-center text-lowercase">';
-                                echo '<span class="holder"><i class="arrow right-arrow"></i></span>';
-                            echo '</div>';
-                        echo '</a>';
+                echo '<article>';
+                    echo '<div>';
+                        echo '<a href="'.str_replace('./content', '', $path).'"></a>';
                     echo '</div>';
                     echo '<div class="text">';
                         echo '<h2><a href="'.str_replace('./content', '', $path).'">'.$params['title'].'</a></h2>';
