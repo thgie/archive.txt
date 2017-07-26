@@ -17,7 +17,6 @@
     $params = $Yaml::parse($page[0]);
     $content = $Parsedown->text($page[1]);
 
-<<<<<<< HEAD
     require_once 'template/index.php';
 
     function remove_utf8_bom($text) {
@@ -41,6 +40,3 @@
 
         return $results;
     }
-=======
-    require_once 'template/index.php';
->>>>>>> parent of 1cd6084... fixed BOM
