@@ -18,7 +18,6 @@
     ?>
     </em>
 </div>
-<div class="post-body col-md-8 col-md-push-2">
-
-<?php echo $content ?>
-                        
+<div class="article">
+    <?php echo $content ?>
+</div>
