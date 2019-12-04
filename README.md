@@ -17,13 +17,13 @@ a file is built as follows:
 title: "archive.txt"
 description: "the metainformation is formated with yaml"
 layout: "home"
----
+
 # archive.txt
 
 the content can be formated with _markdown_
 ```
 
-no metainformation parameters are necessary, but they are passed to the template parts. the dividing `---` line is kind of necessary, i'm just lazy writing exceptions.
+no metainformation parameters are necessary, but they are passed to the template parts. Everything with a : is converted into parameters.
 
 ## templating
 all the metainformation parameters are passed to the template. the rest is some echoing. it's not hard ...
