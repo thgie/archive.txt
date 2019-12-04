@@ -1,25 +1,59 @@
 <?php
 
+ini_set('display_errors', 'On');
+
     require __DIR__ . '/vendor/autoload.php';
 
     $Parsedown = new Parsedown();
-    $Yaml = new Symfony\Component\Yaml\Yaml();
 
     $file;
+    $params = [];
+    $content;
 
-    if(file_exists('./content'.$_SERVER['REQUEST_URI'].'.txt')){
-        $file = './content'.$_SERVER['REQUEST_URI'].'.txt';
+    if(file_exists('./content'.strtok($_SERVER["REQUEST_URI"],'?').'.txt')){
+        $file = './content'.strtok($_SERVER["REQUEST_URI"],'?').'.txt';
     } else {
-        $file = './content'.$_SERVER['REQUEST_URI'].'/index.txt';
+        $file = './content'.strtok($_SERVER["REQUEST_URI"],'?').'/index.txt';
     }
 
-    $file_content = remove_utf8_bom(file_get_contents($file));
+    if(isset($_POST['save'])){
+        file_put_contents($file, $_POST['content']);
+    }
 
-    $page = explode('---', $file_content);
-    $params = $Yaml::parse($page[0]);
-    $content = $Parsedown->text($page[1]);
+    $raw_content = file_get_contents($file);
 
-    require_once 'template/index.php';
+    $params = get_params($file);
+
+    $content = $Parsedown->text($raw_content);
+
+    if($_GET['admin'] == 'XYZ') {
+        require_once 'template/admin.php';
+    } else {
+        require_once 'template/index.php';
+    }
+
+    function get_params($file_path){
+        $params = [];
+        $handle = fopen($file_path, 'r');
+
+        if($handle){
+            $first = true;
+            while (($line = fgets($handle)) !== false) {
+                if($first){
+                    $first = false;
+                    $params['title'] = $line;
+                }
+                $param = explode(': ', $line);
+                if(count($param) > 1){
+                    $params[strtolower($param[0])] = $param[1];
+                }
+            }
+    
+            fclose($handle);
+        }
+
+        return $params;
+    }
 
     function remove_utf8_bom($text) {
         $bom = pack('H*','EFBBBF');

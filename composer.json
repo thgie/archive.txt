@@ -1,6 +1,5 @@
 {
     "require": {
-        "erusev/parsedown": "^1.6",
-        "symfony/yaml": "^3.2"
+        "erusev/parsedown": "^1.6"
     }
 }

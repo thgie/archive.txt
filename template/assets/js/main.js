@@ -1,6 +1,9 @@
 
 document.body.addEventListener('click', function(e){
     if(e.target.matches('a.light')){
+
+        e.preventDefault();
+
         if(document.body.classList.contains('night')){
             document.body.classList.remove('night')
             document.cookie = "night=; max-age=-1; path=/;";

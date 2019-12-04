@@ -1,4 +1,3 @@
-<h1><?php echo $params['title']; ?></h1>
 <div class="meta">
     <time datetime="<?php echo $params['date']; ?>"><?php echo $params['date']; ?></time>
     <em>
