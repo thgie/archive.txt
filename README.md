@@ -25,6 +25,8 @@ the content can be formated with _markdown_
 
 no metainformation parameters are necessary, but they are passed to the template parts. Everything above the triple-line is converted to parameters.
 
+image and file references are always relative to the markdown file.
+
 ## templating
 all the metainformation parameters are passed to the template. the rest is some echoing. it's not hard ...
 
