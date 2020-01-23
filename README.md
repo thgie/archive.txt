@@ -17,13 +17,13 @@ a file is built as follows:
 title: "archive.txt"
 description: "the metainformation is formated with yaml"
 layout: "home"
-
+---
 # archive.txt
 
 the content can be formated with _markdown_
 ```
 
-no metainformation parameters are necessary, but they are passed to the template parts. Everything with a : is converted into parameters.
+no metainformation parameters are necessary, but they are passed to the template parts. Everything above the triple-line is converted to parameters.
 
 ## templating
 all the metainformation parameters are passed to the template. the rest is some echoing. it's not hard ...
@@ -31,8 +31,8 @@ all the metainformation parameters are passed to the template. the rest is some 
 ## routing
 archive.txt tries to find a file either by mapping /example/file to
 
-- content/example/file.txt, _or if this doesn't exist to_
-- content/example/file/index.txt
+- content/example/file.md, _or if this doesn't exist to_
+- content/example/file/index.md
 
 no routing necessary for files (css, images, etc) that exist.
 

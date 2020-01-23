@@ -9,9 +9,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable = no">
-    <meta name="description" content="archive.txt - most minimal cms">
+    <meta name="description" content="<?php echo $params['description']; ?>">
 
-    <title>thgie.ch - <?php echo $params['title']; ?></title>
+    <title>archive.txt - <?php echo $params['title']; ?></title>
 
     <link rel="stylesheet" href="https://use.typekit.net/lap0rgi.css">
     <link rel="stylesheet" href="/template/assets/css/main.css">
@@ -26,7 +26,7 @@
         <nav>
             <a class="home" href="/">hi there</a>
             → <a class="home" href="/about">about</a>
-            → <a class="home" href="/portfolio">portfolio</a>
+            <!-- → <a class="home" href="/portfolio">portfolio</a> -->
         </nav>
 
         <div class="content">

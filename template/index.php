@@ -15,7 +15,7 @@
     }
 
     foreach($imgs as $img){
-        // $img->setAttribute('class', 'img');
+        $img->setAttribute('src', $assets_path.$img->getAttribute('src'));
     }
     foreach($as as $a){
         $a->setAttribute('target', '_blank');
@@ -28,9 +28,9 @@
 
     $content = $dom->saveHTML();
 
-    if(isset($params['layout'])){
-        if(file_exists('./template/parts/'.$params['layout'].'.php')){
-            require_once 'parts/'.$params['layout'].'.php';
+    if(isset($params['template'])){
+        if(file_exists('./template/parts/'.$params['template'].'.php')){
+            require_once 'parts/'.$params['template'].'.php';
         }
     } else {
         echo $content;
