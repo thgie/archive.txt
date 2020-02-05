@@ -37,7 +37,7 @@
         $params = explode("\n", $raw_params);
         $ps = [
             'title' => '',
-            'description' => 'archive.txt'
+            'description' => 'Research Blog and Portfolio of Adrian Demleitner'
         ];
 
         foreach($params as $key => $param){

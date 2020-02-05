@@ -1,158 +1,212 @@
-html,
-body {
+@font-face {
+    font-family: 'Girott';
+    src: url('../fonts/girott_regular.woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'TimesNow';
+    src: url('../fonts/TimesNowSemiLight.woff');
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'TimesNow';
+    src: url('../fonts/TimesNowSemiLightIT.woff');
+    font-style: italic;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'schrijfmachine';
+    src: url('../fonts/schrijfmachine-bold-webfont.woff');
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'schrijfmachine';
+    src: url('../fonts/schrijfmachine-bold-italic-webfont.woff');
+    font-style: italic;
+    font-weight: bold;
+}
+
+* {
     margin: 0;
     padding: 0;
-
-    -webkit-box-sizing: border-box;
     box-sizing: border-box;
-
-    font-family: aktiv-grotesk-extended, sans-serif;
-    font-size: 1rem;
 }
-h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    font-family: aktiv-grotesk, serif;
+
+html {
+    --eng-hl: #EEE9BF;
+    --black: #292421;
+}
+
+body {
+    font-family: 'schrijfmachine';
+}
+
+/*
+
+Layout
+
+*/
+
+main {
+    position: relative;
+}
+
+.content {
+    padding: 4rem 2rem;
+}
+
+.content img {
+    width: 100%;
+    max-width: 1000px;
+    margin: 10vw auto;
+    display: block;
+}
+.content #portfolio .image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+.content #portfolio img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    transform: translateY(-50%);
+}
+
+.content {
+    z-index: 1;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    padding: 0.5rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    z-index: 200;
+}
+
+.entry {
+    margin-bottom: 5vw;
+}
+
+/*
+
+  Typography
+
+*/
+
+* {
+    color: var(--black);
+}
+
+h1,
+h2 {
+    font-family: 'Girott';
+    font-weight: normal;
 }
 
 h1 {
-    font-weight: 900;
-    font-style: italic;
-    font-size: 48px;
+    letter-spacing: -5px;
+    font-size: 16vw;
+    line-height: 1;
+    margin-bottom: 8vw;
 }
-
+h2 {
+    font-size: 10vw;
+    margin-top: 5vw;
+    margin-bottom: 1vw;
+}
 h3 {
-    margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    font-family: 'TimesNow';
+    font-size: 4vw;
+    margin-top: 5vw;
+    margin-bottom: 1vw;
 }
 
-hr {
-    max-width: 300px;
-    margin: 30px 0 40px 0;
-    border: none;
-    border-bottom: 1px solid #676767;
+p,
+ul {
+    font-family: 'TimesNow';
+    font-size: 4vw;
 }
 
-body.night {
-    background: #181818;
-    color: #efefef;
-}
-.wrapper {
-    padding: 50px;
-    max-width: 1280px;
-    line-height: 1.4;
+ul {
+    list-style: circle;
+    list-style-position: inside;
 }
 
 a {
-    color: #1106ff;
-    text-decoration: none;
+    color: var(--black);
 }
 a:hover {
-    text-decoration: underline;
-}
-body.night a {
-    color: #fff;
-    font-weight: bold;
-    text-decoration: underline;
+
 }
 
-code {
-    white-space: normal;
-}
+/*
 
-.wrapper img {
-    width: 100%;
-    max-width: 700px;
-}
+Responsive
 
-ul.dir {
-    list-style: none;
+*/
+@media(min-width: 1200px) {
+    h1 {
+        font-size: 192px;
+    }
+    h2 {
+        font-size: 116px;
+    }
+    h3, p, ul {
+        font-size: 48px;
+    }
 }
-p.meta {
-    padding-top: 40px;
-    text-align: right;
-    font-size: 0.9rem;
-    color: #ababab;
+@media(max-width: 800px) {
+    header {
+        display: block;
+    }
+    header > div + div {
+        margin-top: 10px;
+    }
+    h1 {
+        font-size: 128px;
+    }
+    h2 {
+        font-size: 78px;
+    }
+    h3, p, ul {
+        font-size: 32px;
+    }
 }
-p.is-parameter {
-    display: none;
+@media(max-width: 580px) {
+    .content {
+        padding: 6rem 1rem;
+    }
+    h1 {
+        font-size: 64px;
+        letter-spacing: 0;
+    }
+    h2 {
+        font-size: 38px;
+    }
+    h3, p, ul {
+        font-size: 22px;
+    }
 }
-span.impressum {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    font-size: 11px;
-}
-
-/* */
-a.light {
-    font-size: 25px;
-    position: fixed;
-    right: 10px;
-    top: 0;
-    color: #181818;
-}
-a.light:hover,
-a.light:active,
-a.light:focus {
-    text-decoration: none;
-}
-body.night a.light {
-    color: #efefef;
-    text-decoration: none;
-}
-
-/* portfolio */
-.entries .entry {
-    margin-bottom: 30px;
-}
-.entries .entry h1 {
-    font-size: 22px;
-    margin-bottom: 0;
-}
-.entries .meta {
-    font-size: 14px;
-}
-
-/* content */
-
-.content {
-    position: relative;
-    padding-top: 140px;
-}
-.content .has-header {
-    padding-top: 200px;
-}
-
-.content h1, 
-.content h2, 
-.content h3, 
-.content h4, 
-.content h5, 
-.content h6, 
-.content p {
-    max-width: 812px;
-    text-shadow: 1px 2px 0px rgb(255, 255, 255);
-}
-body.night .content h1, 
-body.night .content h2, 
-body.night .content h3, 
-body.night .content h4, 
-body.night .content h5, 
-body.night .content h6, 
-body.night .content p {
-    text-shadow: none;
-}
-
-/* .header-img {
-    position: absolute;
-    top: 100px;
-    right: 0;
-    z-index: -1;
-
-    opacity: 1;
-
-    transition: 0.5s;
-}
-.header-img:hover {
-    opacity: 0.5;
-} */

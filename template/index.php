@@ -21,9 +21,7 @@
         $a->setAttribute('target', '_blank');
     }
     foreach($ps as $p){
-        if (strpos($p->nodeValue, 'layout:') !== false) {
-            $p->setAttribute('class', 'is-parameter');
-        }
+        
     }
 
     $content = $dom->saveHTML();
