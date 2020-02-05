@@ -7,7 +7,6 @@
 
     <title>things.care - <?php echo $params['title']; ?></title>
 
-    <link rel="stylesheet" href="https://use.typekit.net/lap0rgi.css">
     <link rel="stylesheet" href="/template/assets/css/main.css">
 </head>
 
