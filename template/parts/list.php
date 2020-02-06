@@ -12,6 +12,7 @@
         $dir = './content/'.$params['folder'];
         $files = scandir($dir);
         $entries = [];
+        $tags = [];
 
         foreach($files as $key => $value){
             $path = $dir.DIRECTORY_SEPARATOR.$value;
@@ -30,14 +31,39 @@
                     'content' => $Parsedown->text($page[1])
                 ];
 
+                if(isset($page_params['tags'])){
+                    $_tags = explode(',', $page_params['tags']);
+                    foreach($_tags as $key => $tag){
+                        if(!in_array($tag, $tags)){
+                            $tags[] = $tag;
+                        }
+                    }
+                }
+
                 if(isset($page_params['until'])){
                     $entry['until'] = strtotime($page_params['until']);
                 }
 
                 $date = $page_params['date'];
-                $entries[strtotime($date)] = $entry;
+                
+
+                if (!empty($_GET['tag'])) {
+                    if(strpos($page_params['tags'], $_GET['tag']) !== false){
+                        $entries[strtotime($date)] = $entry;
+                    }
+                } else {
+                    $entries[strtotime($date)] = $entry;
+                }
             }
         }
+
+        sort($tags);
+
+        echo '<div class="tags">';
+            foreach($tags as $key => $tag){
+                echo '<a href="?tag='.$tag.'">'.$tag.'</a> ';
+            }
+        echo '</div>';
 
         krsort($entries);
 
@@ -60,6 +86,17 @@
                         echo '<div class="image">';
                         echo $imgs[0]->C14N();
                         echo '</div>';
+
+                        /*
+
+                        $cleaned_path = str_replace('.md', '', $value['path']);
+                        $cleaned_path = str_replace('./', '/', $cleaned_path);
+                        $cleaned_path = str_replace('\\', '/', $cleaned_path);
+
+                        echo '<div class="image" style="background-image: url('.$cleaned_path.'/../'.$imgs[0]->getAttribute('src').');">';
+                        echo '</div>';
+
+                        */
                     }
                 }
                 
@@ -70,7 +107,11 @@
                     }
                     
                     if(isset($value['tags'])){
-                        echo ' &mdash; '.str_replace(',', ', ', $value['tags']);
+                        echo ' &mdash; ';
+                        $tags = explode(',', $value['tags']);
+                        foreach($tags as $key => $tag){
+                            echo '<a href="?tag='.$tag.'">'.$tag.'</a>&nbsp;';
+                        }
                     }
                 echo '</div>';
 

@@ -23,9 +23,4 @@
                     &mdash; <a class="home" href="/about">about</a>
                     &mdash; <a class="home" href="/portfolio">portfolio</a>
                 </div>
-                <div>
-                    <a href="javascrip:;" class="light">☀</a>
-                    &mdash; <a href="mailto:adrian@things.care" target="_blank">adrian@things.care</a>
-                    &mdash; <a href="tel:0041766811337" target="_blank">+41 76 681 1337</a>
-                </div>
             </header>
