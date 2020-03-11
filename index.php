@@ -6,6 +6,8 @@
 
     require __DIR__ . '/vendor/autoload.php';
 
+    use Symfony\Component\Yaml\Parser;
+
     $Parsedown = new Parsedown();
 
     // editing part
@@ -108,20 +110,15 @@
     // some basic functions
     // extract params from file
     function get_params($raw_params){
-        $params = explode("\n", $raw_params);
-        $ps = [
-            'title' => '',
-            'description' => ''
-        ];
-
-        foreach($params as $key => $param){
-            $param = explode(': ', $param, 2);
-            if(count($param) > 1){
-                $ps[trim(strtolower($param[0]))] = trim($param[1]);
-            }
+        $yaml = new Parser();
+        $params = $yaml->parse($raw_params);
+        if(!isset($params['title'])){
+            $params['title'] = '';
         }
-
-        return $ps;
+        if(!isset($params['description'])){
+            $params['description'] = '';
+        }
+        return $params;
     }
 
     // slugify some strings
