@@ -18,7 +18,9 @@
         $img->setAttribute('src', $assets_path.$img->getAttribute('src'));
     }
     foreach($as as $a){
-        $a->setAttribute('target', '_blank');
+        if(strpos($a->getAttribute('href'), 'http') > -1){
+            $a->setAttribute('target', '_blank');
+        }
     }
     foreach($ps as $p){
         
@@ -33,5 +35,36 @@
     } else {
         echo $content;
     }
+
+    ?>
+    
+    <div class="breadcrumbs">
+        <?php
+
+            $parts = explode("/", dirname($_SERVER['REQUEST_URI']));
+            echo '<a href="/">/</a> &mdash; ';
+            foreach ($parts as $key => $dir) {
+                if($dir != '\\'){
+                    $url = "";
+                    for ($i = 1; $i <= $key; $i++) {
+                        $url .= $parts[$i] . '/'; 
+                    }
+                    if ($dir != "") {
+                        echo '<a href="/'.rtrim($url, '/').'">'.$dir.'</a> &mdash; ';
+                    }
+                }
+            }
+            echo $params['title'];
+
+        ?>
+    </div>
+
+    <?php if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+
+        <iframe class="filemanager" src="/template/tinyfilemanager/tinyfilemanager.php" frameborder="0"></iframe>
+
+    <?php endif; ?>
+
+    <?php
 
     require_once 'parts/footer.php';

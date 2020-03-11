@@ -6,7 +6,7 @@
     <meta name="description" content="<?php echo $params['description']; ?>">
 
     <title>things.care - <?php echo $params['title']; ?></title>
-
+    
     <link rel="stylesheet" href="/template/assets/css/main.css">
 </head>
 
@@ -19,8 +19,40 @@
 
             <header>
                 <div>
-                    <a class="home" href="/">hi there</a>
-                    &mdash; <a class="home" href="/about">about</a>
-                    &mdash; <a class="home" href="/portfolio">portfolio</a>
+                    <?php
+                        echo $Parsedown->text(file_get_contents('./conf/nav.md'));
+                    ?>
+                </div>
+                <div class="wiki-actions">
+                    <?php if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']): ?>
+                        <a href="?action=create" class="tdn create">➕</a>
+                        <a href="?action=edit" class="tdn edit">✏️</a>
+                        <a href="?action=move" class="tdn move">🗃️</a>
+                        <a href="javascript:;" class="tdn filemanager-btn">🖼️</a>
+
+                        <script>
+                            
+                            document.addEventListener('keyup', (e) => {
+                                if (e.code === 'KeyE') {
+                                    document.querySelector('.edit').click();
+                                }
+                                if (e.code === 'KeyC') {
+                                    document.querySelector('.create').click();
+                                }
+                                if (e.code === 'KeyM') {
+                                    document.querySelector('.move').click();
+                                }
+                                if (e.code === 'KeyF') {
+                                    document.querySelector('.filemanager-btn').click();
+                                }
+                            });
+
+                            document.querySelector('.filemanager-btn').addEventListener('click', function(){
+                                document.querySelector('.filemanager').classList.toggle('open');
+                            })
+                        
+                        </script>
+
+                    <?php endif; ?>
                 </div>
             </header>

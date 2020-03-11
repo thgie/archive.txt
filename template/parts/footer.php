@@ -1,11 +1,11 @@
     </div>
 </main>
 
-<footer class="footer">
+<footer class="impressum">
     <div>
-        <a href="javascrip:;" class="light">☀</a>
-        &mdash; <a href="mailto:adrian@things.care" target="_blank">adrian@things.care</a>
-        &mdash; <a href="tel:0041766811337" target="_blank">+41 76 681 1337</a>
+        <?php
+            echo $Parsedown->text(file_get_contents('./conf/footer.md'));
+        ?>
     </div>
     <div>
         made with 💖 and <a href="https://github.com/thgie/archive.txt/" target="_blank">archive.txt</a>

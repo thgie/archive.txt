@@ -68,6 +68,7 @@ main {
     margin: 10vw auto;
     display: block;
 }
+
 .content #portfolio .image {
     width: 100%;
     height: 200px;
@@ -75,6 +76,7 @@ main {
     margin-bottom: 0.5rem;
     margin-top: 0.5rem;
 }
+
 .content #portfolio img {
     width: 100%;
     height: auto;
@@ -92,16 +94,21 @@ header {
     left: 0;
     z-index: 2;
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.5rem 2rem;
     font-weight: bold;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
+.breadcrumbs {
+    margin-top: 4rem;
+}
+
 footer {
     z-index: 2;
     width: 100%;
+    margin-top: 5rem 2rem;
     padding: 0.5rem;
     font-weight: bold;
     display: flex;
@@ -112,11 +119,14 @@ footer {
 .entry {
     margin-bottom: 5vw;
 }
-.tags, .meta {
+
+.tags,
+.meta {
     margin-bottom: 3rem;
     line-height: 1.5;
     font-size: 0.8rem;
 }
+
 .meta {
     margin-top: 0.5rem;
 }
@@ -139,26 +149,35 @@ h2 {
 
 h1 {
     letter-spacing: -5px;
-    font-size: 16vw;
+    font-size: 8vw;
     line-height: 1;
-    margin-bottom: 8vw;
+    margin-bottom: 4vw;
 }
+
 h2 {
-    font-size: 10vw;
+    font-size: 6vw;
     margin-top: 5vw;
     margin-bottom: 1vw;
 }
+
 h3 {
     font-family: 'TimesNow';
-    font-size: 4vw;
-    margin-top: 5vw;
+    font-size: 3vw;
+    margin-top: 3vw;
     margin-bottom: 1vw;
 }
 
 p,
 ul {
     font-family: 'TimesNow';
-    font-size: 4vw;
+    font-size: 2.5vw;
+    margin-bottom: 2vw;
+}
+
+header p,
+footer p {
+    font-family: "schrijfmachine";
+    font-size: 15px;
 }
 
 ul {
@@ -166,11 +185,55 @@ ul {
     list-style-position: inside;
 }
 
+li>p {
+    display: inline-block;
+}
+
+hr {
+    border: none;
+    border-bottom: 10px solid white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    margin: 4vw 0;
+}
+
 a {
     color: var(--black);
 }
-a:hover {
 
+a:hover {}
+
+a.tdn {
+    text-decoration: none;
+}
+
+.wiki-actions {
+    position: fixed;
+    top: 20px;
+    right: 5px;
+}
+.wiki-actions a {
+    padding: 10px;
+    text-decoration: none;
+}
+
+iframe {
+	border: 0;
+	width: 100%;
+	height: 800px;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.filemanager {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 0;
+	box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1);
+    transition: 0.5s;
+    z-index: 10;
+}
+.filemanager.open {
+    height: calc(100% - 50px);
 }
 
 /*
@@ -180,46 +243,66 @@ Responsive
 */
 @media(min-width: 1200px) {
     h1 {
-        font-size: 192px;
+        font-size: 96px;
     }
+
     h2 {
-        font-size: 116px;
+        font-size: 72px;
     }
-    h3, p, ul {
-        font-size: 48px;
+
+    h3 {
+        font-size: 36px;
+    }
+    p,
+    ul {
+        font-size: 30px;
     }
 }
+
 @media(max-width: 800px) {
+
     header,
     footer {
-    display: block;
+        display: block;
     }
-    header > div + div,
-    footer > div + div {
-    margin-top: 10px;
+
+    header>div+div,
+    footer>div+div {
+        margin-top: 10px;
     }
+
     h1 {
-        font-size: 128px;
+        font-size: 65px;
     }
+
     h2 {
-        font-size: 78px;
+        font-size: 48px;
     }
-    h3, p, ul {
-        font-size: 32px;
+
+    h3,
+    p,
+    ul {
+        font-size: 20;
     }
 }
-@media(max-width: 580px) {
+
+@media(max-width: 860px) {
     .content {
-        padding: 6rem 1rem;
+        padding: 4rem 1rem;
     }
+
     h1 {
         font-size: 64px;
         letter-spacing: 0;
     }
+
     h2 {
         font-size: 38px;
     }
-    h3, p, ul {
+
+    h3,
+    p,
+    ul {
         font-size: 22px;
     }
 }
