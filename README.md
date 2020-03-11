@@ -37,8 +37,6 @@ image references are always relative to the markdown file. like this, the refere
 
 ## cms manual
 
-# playground
-
 ### Salute 👋
 
 You can log in by adding *?login* to the url. The login data would be in `conf/conf.conf`. Make sure to md5 hash the password.
