@@ -1,7 +1,7 @@
 # archive.txt
 _a most minimal cms to produce websites out of text archives_
 
-i truely believe, on of humanities biggest achievements is the txt-file. it's just pure and innocent data. _archive.txt_ lives on top of a bunch of folders and txt-files and renders that structure into a website.
+One of humanities biggest achievements is the txt-file. It's just pure and innocent data. _archive.txt_ lives on top of a bunch of folders and txt-files and renders that structure into a website.
 
 ## installation
 1. git clone git@github.com:thgie/archive.txt.git
@@ -9,17 +9,17 @@ i truely believe, on of humanities biggest achievements is the txt-file. it's ju
 3. composer install
 
 ## routing
-archive.txt tries to find a file either by mapping /example/file to `content/example/file.md` _or if this doesn't exist to_ `content/example/file/index.md`.
+The folder structure becomes url structure. archive.txt tries to find a file either by mapping /example/file to `content/example/file.md` _or if this doesn't exist to_ `content/example/file/index.md`.
 
-no routing necessary for physical files (css, images, etc) that exist.
+No routing necessary for physical files (css, images, etc) that exist.
 
 ## templating
-all the metainformation parameters are passed to the template.
+All the metainformation parameters are passed to the template. They're written in `yaml` style.
 
 ## content
-all content should be in the `/content` folder. the folder structure becomes url structure. the files can be plain text or with markdown and can even contain meta-information.
+All content should be in the `/content` folder. The files can be plain text or with markdown and can even contain meta-information.
 
-a file is built as follows:
+A file is built as follows:
 
 ```
 title: archive.txt
@@ -28,12 +28,12 @@ date: Feb 20, 2020
 ---
 # archive.txt
 
-the content can be formated with _markdown_
+The content can be formated with _markdown_
 ```
 
-no metainformation parameters are necessary, but they are passed to the template parts. Everything above the triple-line is converted to parameters.
+No metainformation parameters are necessary, but they are passed to the template parts. Everything above the triple-line is converted to parameters.
 
-image references are always relative to the markdown file. like this, the reference works locally and on the server w/o problems.
+Image references are always relative to the markdown file. Like this, the references work locally and on the server w/o problems.
 
 ## cms manual
 
