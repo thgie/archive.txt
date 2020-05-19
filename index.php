@@ -7,6 +7,7 @@
     require __DIR__ . '/vendor/autoload.php';
 
     use Symfony\Component\Yaml\Parser;
+    use Symfony\Component\Yaml\Yaml;
 
     $Parsedown = new Parsedown();
 
@@ -14,7 +15,14 @@
     if(isset($_SESSION['logged_in'])){
         if(isset($_POST['edit'])){
             if(isset($_POST['file']) && isset($_POST['content'])){
-                file_put_contents($_POST['file'], $_POST['content']);
+
+                $page = explode('---', $_POST['content'], 2);
+                $params = get_params($page[0]);
+
+                $params['user'] = $_SESSION['user'] ?? '';
+                $params['last_edit'] = date('M d, Y H:i:s');
+
+                file_put_contents($_POST['file'], Yaml::dump($params).PHP_EOL.'---'.PHP_EOL.trim($page[1]));
             }
         }
         if(isset($_POST['create']) || isset($_POST['move'])){
@@ -71,8 +79,9 @@
     if(isset($_GET['login'])) {
         require_once 'template/admin/login.php';
         if(isset($_POST['password'])){
-            if($_POST['user'] == $conf['user'] && md5($_POST['password']) == $conf['pwd']){
+            if(strtolower(md5($_POST['password'])) == strtolower($conf['users'][$_POST['user']]['pwd'])){
                 $_SESSION['logged_in'] = true;
+                $_SESSION['user'] = $_POST['user'];
                 header("Location: " . $_POST['path']);
             }
         }
@@ -95,8 +104,12 @@
         }
     } else {
         // if no admin function found, just show content
-        if(isset($conf['login']) || isset($params['login'])){
-            if(isset($_SESSION['logged_in']) || $params['login'] == 'false'){
+        $needs_login = $conf['login'];
+        if(isset($params['login'])){
+            $needs_login = $params['login'];
+        }
+        if($needs_login){
+            if(isset($_SESSION['logged_in'])){
                 require_once 'template/index.php';
             } else {
                 echo '<h1><a href="?login">nothing to see here</a></h1>';

@@ -1,6 +1,6 @@
-Title: "archive.txt"
-Description: "most minimal cms to produce websites out of text archives"
-Template: "home"
-Date: 2020-12-23
+title: "archive.txt"
+description: "most minimal cms to produce websites out of text archives"
+date: 2020-12-23
+login: false
 ---
-#archive.txt
+# archive.txt
