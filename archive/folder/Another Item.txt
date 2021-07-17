@@ -1,0 +1,6 @@
+title: Another Item
+date: 2021-07-17
+---
+# Another Item...
+
+...in a subfolder, but with `.md` ending.
