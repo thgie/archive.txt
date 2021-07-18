@@ -61,16 +61,31 @@ function mapping($dir, &$results = array()) {
         $path = realpath($dir . DIRECTORY_SEPARATOR . $value);
         if (!is_dir($path)) {
             $info = pathinfo($path);
-            if($info['extension'] == 'md' || $info['extension'] == 'txt') {
-                $slug = str_replace(getcwd(), '', $info['dirname']).'/'.slugify($info['filename']);
-                $content = parse($path);
-                $results[$slug] = [
-                    'title' => $info['filename'],
-                    'path' => $path,
-                    'slug' => $slug,
-                    'params' => $content[0],
-                    'content' => $content[1]
-                ];
+            if(isset($info['extension'])){
+                if($info['extension'] == 'md' || $info['extension'] == 'txt') {
+                    $dirs = explode('/', str_replace(getcwd(), '', $info['dirname']));
+                    $dirname = '';
+                    if(count($dirs) > 1){
+                        $dirname = '/';
+                        foreach($dirs as $key => $dir){
+                            if($dir != ''){
+                                $dirname .= slugify($dir);
+                            }
+                        }
+                    } else {
+                        $dirname = str_replace(getcwd(), '', $info['dirname']);
+                    }
+                    
+                    $slug = $dirname.'/'.slugify($info['filename']);
+                    $content = parse($path);
+                    $results[$slug] = [
+                        'title' => $info['filename'],
+                        'path' => $path,
+                        'slug' => $slug,
+                        'params' => $content[0],
+                        'content' => $content[1]
+                    ];
+                }
             }
         } else if ($value != "." && $value != ".." && $value != "_deprecated") {
             mapping($path, $results);
@@ -91,7 +106,18 @@ function parse($path) {
         foreach(preg_split("/((\r?\n)|(\r\n?))/", $head) as $line){
             if($line != ''){
                 $param = explode(':', $line, 2);
-                $params[$param[0]] = $param[1];
+                /*
+                    TODO: A bit hacky, basically checking if there is a param
+                    and if not, aborting to default.
+                */
+                if(isset($param[1])){
+                    $params[$param[0]] = $param[1];
+                } else {
+                    return [
+                        [],
+                        $file_content
+                    ];
+                }
             }
         } 
 
@@ -124,7 +150,7 @@ function render_wiki_links($content){
     foreach($matches[1] as $i => $match) {
         $slug = get_slug_from_title($match);
         if($slug) {
-            $a = '<a href="'.$slug.'">'.$match.'</a>';
+            $a = '<a href="'.$slug.'" target="_self">'.$match.'</a>';
             $content = str_replace($matches[0][$i], $a, $content);
         }
     }
