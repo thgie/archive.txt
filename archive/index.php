@@ -45,8 +45,22 @@ $title = isset($map[$route]['params']['title'])
 <body>
 
     <?php if(isset($map[$route]['params']['template'])): ?>
+        <?php if($map[$route]['params']['template'] == 'blog'): ?>
+            <?= render($map[$route]['content']) ?>
+            <ul>
+            <?php
+                $entries = mapping($map[$route]['dirname'].'/'.$map[$route]['params']['source']);
+                foreach($entries as $key => $entry): ?>
+                    <li><a href="<?= $entry['slug'] ?>" target="_self"><?= $entry['title'] ?></a></li>
+            <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
     <?php else: ?>
         <?= render($map[$route]['content']) ?>
+    <?php endif; ?>
+
+    <?php if(isset($map[$route]['params']['relations'])): ?>
+        <?= render_wiki_links($map[$route]['params']['relations']) ?>
     <?php endif; ?>
 
 </body>
@@ -81,6 +95,7 @@ function mapping($dir, &$results = array()) {
                     $results[$slug] = [
                         'title' => $info['filename'],
                         'path' => $path,
+                        'dirname' => $info['dirname'],
                         'slug' => $slug,
                         'params' => $content[0],
                         'content' => $content[1]
@@ -111,7 +126,7 @@ function parse($path) {
                     and if not, aborting to default.
                 */
                 if(isset($param[1])){
-                    $params[$param[0]] = $param[1];
+                    $params[$param[0]] = trim($param[1]);
                 } else {
                     return [
                         [],
